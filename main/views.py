@@ -5,12 +5,17 @@ from django.shortcuts import render
 def index(request):
     context = {
         'title': 'FirstUnicorn',
-        'content': 'Main page'
+        'content': 'Это главная'
     }
         
     return render(request, 'main/index.html', context)
 
 
 def about(request):
-    return HttpResponse('About page')
+    context = {
+        'title': 'About Us',
+        'content': 'Мы: я, он, он...'
+    }
+
+    return render(request, 'main/about.html', context)
 

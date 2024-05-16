@@ -1,0 +1,43 @@
+{% comment %} 
+    В этом файле должна находиться базовая разметка для всех страниц сайта. 
+    Базовая разметка включает в себя, например:
+        - Шапку (header)
+        - Подвал (footer)
+{% endcomment %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% comment %} Стили, картинки, скрипты и тп. подгружать следующим образом: {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static "css/..." %}"> {% endcomment %}
+
+    {% block css %}{% endblock %}
+
+    <title>{{ title }}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Главная</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {% comment %}
+            Нужно ли отделять Подвал отдельно?
+                Да = Подвал бывает разный,
+                Нет = Подвал везде один
+        {% endcomment %}
+        {% block footer %}{% endblock %}
+    </footer>
+</body>
+</html>
