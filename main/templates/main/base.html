@@ -22,9 +22,17 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="#">Главная</a>
-        </nav>
+        {% comment %} Header ! {% endcomment %}
+        <div class="container">
+            <h1>FirstUnicorn</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url "main:index" %}">Главная</a></li>
+                    <li><a href="{% url "main:about" %}">О нас</a></li>
+                    <li><a href="{% url "main:profile" %}">Профиль</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -32,12 +40,10 @@
     </main>
 
     <footer>
-        {% comment %}
-            Нужно ли отделять Подвал отдельно?
-                Да = Подвал бывает разный,
-                Нет = Подвал везде один
-        {% endcomment %}
-        {% block footer %}{% endblock %}
+        {% comment %} Footer ! {% endcomment %}
+        <div class="container">
+            <p>&copy; 2024 FirstUnicorn</p>
+        </div>
     </footer>
 </body>
 </html>

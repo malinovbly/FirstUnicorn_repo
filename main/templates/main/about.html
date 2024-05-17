@@ -4,16 +4,10 @@
 
 {% block css %}
     {% comment %} Стили, картинки, скрипты и тп. подгружать следующим образом: {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="{% static "css/..." %}"> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static "css/style.css" %}"> {% endcomment %}
 {% endblock %}
 
 {% block content %}
-    {% comment %} Контент главной страницы {% endcomment %}
-    <h1>Это главная страница</h1>
-    <p>(На самом деле это не главная страница, а страница "О нас")</p>
-    {{ content }}
-{% endblock %}
-
-{% block footer %}
-    {% comment %} Подвал главной страницы {% endcomment %}
+    {% comment %} Контент страницы "О нас" {% endcomment %}
+    <p>Здесь информация о нас.</p>
 {% endblock %}
