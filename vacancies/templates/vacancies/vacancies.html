@@ -9,5 +9,12 @@
 
 {% block content %}
     {% comment %} Контент главной страницы {% endcomment %}
-
+    {% for vacancy in vacancies %}
+        {% comment %} Шаблон вакансии {% endcomment %}
+        <div>
+            <h2>{{ vacancy.name }}</h2>
+            <p>{{ vacancy.description }}</p>
+            <span>{{ vacancy.price }}</span>
+        </div>
+    {% endfor %}
 {% endblock %}
