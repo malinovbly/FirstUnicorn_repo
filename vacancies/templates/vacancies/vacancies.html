@@ -2,19 +2,42 @@
 {% load static %}
 
 
-{% block css %}
-    {% comment %} Стили, картинки, скрипты и тп. подгружать следующим образом: {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="{% static "css/style.css" %}"> {% endcomment %}
-{% endblock %}
-
 {% block content %}
-    {% comment %} Контент главной страницы {% endcomment %}
-    {% for vacancy in vacancies %}
-        {% comment %} Шаблон вакансии {% endcomment %}
-        <div>
-            <h2>{{ vacancy.name }}</h2>
-            <p>{{ vacancy.description }}</p>
-            <span>{{ vacancy.price }}</span>
+{% comment %} Контент главной страницы вакансий {% endcomment %}
+
+<div class="container">
+    <section id="ads">
+        <h2>Поиск услуг</h2>
+        <form id="filter-form">
+            <div class="filter-group">
+                <label for="filter-keywords">Ключевые слова:</label>
+                <input type="text" id="filter-keywords" name="filter-keywords">
+            </div>
+            <div class="filter-group">
+                <label for="filter-min-price">Минимальная цена:</label>
+                <input type="number" id="filter-min-price" name="filter-min-price">
+            </div>
+            <div class="filter-group">
+                <label for="filter-max-price">Максимальная цена:</label>
+                <input type="number" id="filter-max-price" name="filter-max-price">
+            </div>
+            <button type="submit">Найти!</button>
+        </form>
+
+        <div id="ads-list">
+            {% for vacancy in vacancies %}
+                <div class="ad-item">
+                    <h3>{{ vacancy.name }}</h3>
+                    <p>{{ vacancy.description }}</p>
+                    <p>Цена: {{ vacancy.price }} руб.</p>
+                    <div class="ad-photos">
+                        <img src="#" alt="Фото объявления">
+                    </div>
+                    <p>Опубликовано: {{ vacancy.author_link }}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </section>
+</div>
+
 {% endblock %}

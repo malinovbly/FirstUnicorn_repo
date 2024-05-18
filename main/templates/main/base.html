@@ -12,26 +12,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% comment %} Стили, картинки, скрипты и тп. подгружать следующим образом: {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="{% static "css/..." %}"> {% endcomment %}
-
-    {% block css %}{% endblock %}
-
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>{{ title }}</title>
 </head>
 <body>
     <header>
         {% comment %} Header ! {% endcomment %}
+
         <div class="container">
             <h1>FirstUnicorn</h1>
             <nav>
-                <ul>
-                    <li><a href="{% url "main:index" %}">Главная</a></li>
-                    <li><a href="{% url "vacancies:index" %}">Вакансии</a></li>
-                    <li><a href="{% url "main:about" %}">О нас</a></li>
-                    <li><a href="{% url "main:profile" %}">Профиль</a></li>
-                </ul>
+                <a href="{% url "main:index" %}">Главная</a>
+                <a href="{% url "vacancies:index" %}">Вакансии</a>
+                <a href="{% url "main:about" %}">О нас</a>
+
+                {% comment %} <a href="register.html">Регистрация</a>
+                <a href="login.html">Вход</a>
+
+                <a href="add-ad.html" style="display: none;">Добавить объявление</a>
+                <a href="profile.html" style="display: none;">Профиль</a>
+                <a href="#" style="display: none;">Выход</a> {% endcomment %}
             </nav>
         </div>
     </header>
@@ -41,7 +41,6 @@
     </main>
 
     <footer>
-        {% comment %} Footer ! {% endcomment %}
         <div class="container">
             <p>&copy; 2024 FirstUnicorn</p>
         </div>
