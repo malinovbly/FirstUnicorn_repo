@@ -87,6 +87,15 @@ form button:hover {
     margin-bottom: 1rem;
 }
 
+.filter-group-order input {
+    margin-right: 10px;
+}
+
+.filter-group-order label {
+    display: inline-block;
+    margin-top: 5px;
+}
+
 #filter-form {
     margin-bottom: 2rem;
 }

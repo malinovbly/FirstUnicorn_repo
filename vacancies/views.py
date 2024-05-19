@@ -3,7 +3,11 @@ from vacancies.models import Vacancy
 
 
 def vacancies(request):
+    order_by = request.GET.get('order_by', None)
     vacancies = Vacancy.objects.all()
+
+    if order_by and order_by != "default":
+        vacancies = vacancies.order_by(order_by)
 
     context = {
         'title': 'FirstUnicorn | Вакансии',
