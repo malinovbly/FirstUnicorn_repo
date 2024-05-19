@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Vacancy(models.Model):
-    name = models.CharField(max_length=150, unique=True, verbose_name='Название')
+    name = models.CharField(max_length=150, verbose_name='Название')
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
     description = models.TextField(max_length=300, blank=True, null=True, verbose_name='Описание')
     make_time = models.CharField(max_length=100, blank=True, verbose_name='Время работы')
@@ -18,6 +18,10 @@ class Vacancy(models.Model):
         verbose_name = 'Вакансию'
         verbose_name_plural = 'Вакансии'
 
+    def __str__(self):
+        return self.name
 
-# models.EmailField(max_length=200)
-# models.PhoneNumberField(_(""))
+
+# class User(models.Model):
+#     email = models.EmailField(max_length=200)
+#     phone = models.PhoneNumberField(_(""))
