@@ -16,7 +16,7 @@
             <div id="ads-list">
                 {% for vacancy in popular_vacancies %}
                     <div class="ad-item">
-                        <h3><a href="#">{{ vacancy.name }}</a></h3>
+                        <h3><a href="{% url "vacancies:vacancy" vacancy.slug %}">{{ vacancy.name }}</a></h3>
                         <p>{{ vacancy.description }}</p>
                         <p>Срок: <b>{{ vacancy.make_time }}</b></p>
                         <p>Стоимость: <b>{{ vacancy.price }}</b> руб.</p>

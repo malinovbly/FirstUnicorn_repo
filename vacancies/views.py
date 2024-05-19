@@ -13,11 +13,12 @@ def vacancies(request):
     return render(request, 'vacancies/vacancies.html', context)
 
 
-def vacancy(request):
-    # vacancies = Vacancy.objects.all()
+def vacancy(request, vacancy_slug):
+    vacancy = Vacancy.objects.get(slug=vacancy_slug)
 
     context = {
-        'title': 'FirstUnicorn | {Название вакансии}',
+        'title': vacancy.name,
+        'vacancy': vacancy,
     }
 
     return render(request, 'vacancies/vacancy.html', context)

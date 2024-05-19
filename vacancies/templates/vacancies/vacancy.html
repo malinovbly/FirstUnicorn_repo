@@ -7,13 +7,20 @@
 
 <div class="container">
     <section class="ad-details">
-        <h2>Услуги квалифицированного слесаря</h2>
-        <p>Предлагаю услуги опытного слесаря по ремонту и обслуживанию оборудования. Быстро и качественно выполним слесарные работы любой сложности.</p>
-        <p>Цена: 5000 руб.</p>
+        <h2>{{ vacancy.name }}</h2>
+        <p>{{ vacancy.description }}</p>
+        <p>Срок: <b>{{ vacancy.make_time }}</b></p>
+        <p>Стоимость: <b>{{ vacancy.price }}</b> руб.</p>
         <div class="ad-photos">
-            <img src="#" alt="Фото работы">
+            {% if vacancy.image %}
+                <img src="{{ vacancy.image.url }}" alt="Фото объявления">
+            {% else %}
+                <img src="{% static "img/img_not_found.png" %}" alt="Фото объявления">
+            {% endif %}
         </div>
+
         <p>Опубликовано: <a href="#">Иван Иванов</a></p>
+        
         <p>Электронная почта: <a href="email:ivanov@example.com">ivanov@example.com</a></p>
         <p>Телефон: <a href="tel:+7-123-456-7890">+7 (123) 456-78-90</a></p>
     </section>
