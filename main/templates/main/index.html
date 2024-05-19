@@ -12,20 +12,25 @@
     </section>
     
     <section id="ads">
-        <h2>Самые востребованные слуги</h2>
-        {% for vacancy in popular_vacancies %}
+        <h3>Здесь вы можете посмотреть самые востребованные услуги:</h3>
             <div id="ads-list">
-                <div class="ad-item">
-                    <h3>{{ vacancy.name }}</h3>
-                    <p>{{ vacancy.description }}</p>
-                    <p>Цена: {{ vacancy.price }} руб.</p>
-                    <div class="ad-photos">
-                        <img src="#" alt="Фото объявления">
+                {% for vacancy in popular_vacancies %}
+                    <div class="ad-item">
+                        <h3><a href="#">{{ vacancy.name }}</a></h3>
+                        <p>{{ vacancy.description }}</p>
+                        <p>Срок: <b>{{ vacancy.make_time }}</b></p>
+                        <p>Стоимость: <b>{{ vacancy.price }}</b> руб.</p>
+                        <div class="ad-photos">
+                            {% if vacancy.image %}
+                                <img src="{{ vacancy.image.url }}" alt="Фото объявления">
+                            {% else %}
+                                <img src="{% static "img/img_not_found.png" %}" alt="Фото объявления">
+                            {% endif %}
+                        </div>
+                        <p>Опубликовано: {{ vacancy.author_link }}
                     </div>
-                    <p>Опубликовано: {{ vacancy.author_link }}
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
     </section>
 </div>
 

@@ -27,12 +27,16 @@
         <div id="ads-list">
             {% for vacancy in vacancies %}
                 <div class="ad-item">
-                    <h3>{{ vacancy.name }}</h3>
+                    <h3><a href="#">{{ vacancy.name }}</a></h3>
                     <p>{{ vacancy.description }}</p>
                     <p>Срок: <b>{{ vacancy.make_time }}</b></p>
-                    <p>Цена: {{ vacancy.price }} руб.</p>
+                    <p>Стоимость: <b>{{ vacancy.price }}</b> руб.</p>
                     <div class="ad-photos">
-                        <img src="#" alt="Фото объявления">
+                        {% if vacancy.image %}
+                            <img src="{{ vacancy.image.url }}" alt="Фото объявления">
+                        {% else %}
+                            <img src="{% static "img/img_not_found.png" %}" alt="Фото объявления">
+                        {% endif %}
                     </div>
                     <p>Опубликовано: {{ vacancy.author_link }}
                 </div>

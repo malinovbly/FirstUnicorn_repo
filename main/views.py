@@ -1,33 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from vacancies.models import Vacancy
+
 
 def index(request):
+    popular_vacancies = Vacancy.objects.filter(id__lt=4)
+
     context = {
         'title': 'FirstUnicorn',
-        'popular_vacancies': [
-            {
-                'name': 'Профессиональные услуги токаря',
-                'description': 'Предлагаю услуги профессионального токаря с многолетним опытом работы. Изготавливаю и ремонтирую детали различной сложности из металла и пластика по чертежам заказчика.',
-                'price': 500.00,
-                'author_link': 'author_link_here',
-                'image': 'image_here',
-            },
-            {
-                'name': 'Механообработка металлов и сплавов',
-                'description': 'Профессиональная механообработка деталей любой сложности на современных станках. Обеспечим точность и качество обработки, строго соблюдаем сроки.',
-                'price': 500.00,
-                'author_link': 'author_link_here',
-                'image': 'image_here',
-            },
-            {
-                'name': 'Услуги квалифицированного слесаря',
-                'description': 'Предлагаю услуги опытного слесаря по ремонту и обслуживанию оборудования. Быстро и качественно выполним слесарные работы любой сложности.',
-                'price': 500.00,
-                'author_link': 'author_link_here',
-                'image': 'image_here',
-            },
-        ]
+        'popular_vacancies': popular_vacancies,
     }
         
     return render(request, 'main/index.html', context)
