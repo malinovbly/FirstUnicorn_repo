@@ -32,11 +32,41 @@
             <button class="btn btn-outline-warning" type="submit">Поиск</button>
         </form>
 
+        {% if request.GET.q %}
+            <h3>Результаты поиска по запросу "{{ request.GET.q }}"</h3>
+        {% endif %}
+        {% if not vacancies %}
+            <link rel="stylesheet" href="{% static "css/my_footer_css.css" %}">
+            <h2>По вашему запросу ничего не найдено</h2>
+        {% endif %}
+
         <div id="ads-list">
             {% for vacancy in vacancies %}
                 <div class="ad-item">
-                    <h3><a href="{% url "vacancies:vacancy" vacancy.slug %}">{{ vacancy.name }}</a></h3>
-                    <p>{{ vacancy.description }}</p>
+                    <a href="{% url "vacancies:vacancy" vacancy.slug %}">
+                        <h3>
+                            {% autoescape off %}
+                                {% if vacancy.headline %}
+                                    {{ vacancy.headline }}
+                                {% else %}
+                                    {{ vacancy.name }}
+                                {% endif %}
+                            {% endautoescape %}
+                        </h3>
+                    </a>
+                    <p>
+                        {% autoescape off %}
+                            {% if vacancy.bodyline %}
+                                {% comment %}
+                                    В след. строке ошибка: если показывать vacancy.bodyline, 
+                                    то в результате будет в описании начинаться с поискового слова. 
+                                {% endcomment %}
+                                {{ vacancy.description|truncatechars:55 }}
+                            {% else %}
+                                {{ vacancy.description|truncatechars:55 }}
+                            {% endif %}
+                        {% endautoescape %}
+                    </p>
                     <p>Срок: <b>{{ vacancy.make_time }}</b></p>
                     <p>Стоимость: <b>{{ vacancy.price }}</b> руб.</p>
                     <div class="ad-photos">
@@ -46,7 +76,7 @@
                             <img src="{% static "img/img_not_found.png" %}" alt="Фото объявления">
                         {% endif %}
                     </div>
-                    <p>Опубликовано: {{ vacancy.author_link }}
+                    <p>Опубликовано: {{ vacancy.author_link }}</p>
                 </div>
             {% endfor %}
         </div>
