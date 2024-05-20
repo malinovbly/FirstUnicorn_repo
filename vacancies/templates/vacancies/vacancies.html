@@ -8,12 +8,12 @@
 <div class="container">
     <section id="ads">
         <h2>Поиск услуг</h2>
-        <form id="filter-form" method="get" action="">
-            <div class="filter-group">
+        <form id="filter-form" method="get" action="{% url "vacancies:search" %}">
+            <div class="filter-group filter-group-search">
                 <label for="filter-keywords">Ключевые слова:</label>
-                <input type="text" id="filter-keywords" name="filter-keywords">
+                <input class="form-control me-2" type="search" id="filter-keywords" name="q" placeholder="Найти">
             </div>
-            <h3>Сортировать:</h3>
+            <p style="margin-bottom: 5px;">Сортировать:</p>
             <div class="filter-group filter-group-order form-check mx-3">
                 <input class="form-check-input" type="radio" name="order_by" value="default"
                 {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %}>
@@ -29,7 +29,7 @@
                 {% if request.GET.order_by == '-price' %}checked{% endif %}>
                 <label class="form-check-label" for="order_by">От дорогих к дешевым</label>
             </div>
-            <button type="submit">Применить</button>
+            <button class="btn btn-outline-warning" type="submit">Поиск</button>
         </form>
 
         <div id="ads-list">

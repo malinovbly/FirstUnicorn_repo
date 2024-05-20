@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, render
 from vacancies.models import Vacancy
+from vacancies.utils import q_search
 
 
 def vacancies(request):
     order_by = request.GET.get('order_by', None)
     vacancies = Vacancy.objects.all()
+    query = request.GET.get('q', None)
 
+    if query:
+        vacancies = q_search(query)
+        
     if order_by and order_by != "default":
         vacancies = vacancies.order_by(order_by)
 
