@@ -9,8 +9,7 @@ class User(AbstractUser):
     profession = models.CharField(max_length=150, blank=True, null=True, verbose_name='Профессия')
     work_experience = models.CharField(max_length=150, blank=True, null=True, verbose_name='Стаж')
     self_info = models.TextField(max_length=350, blank=True, null=True, verbose_name='О себе')
-    # birthdate = models.DateField(verbose_name='Дата рождения')
-
+    
     class Meta:
         db_table = 'user'
         verbose_name = 'Пользователя'

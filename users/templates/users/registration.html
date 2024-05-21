@@ -64,7 +64,7 @@
                 <div class="alert alert-danger">{{ form.profession.errors }}</div>
             {% endif %}
 
-            <label for="id_work_experience">Стаж работы (в годах)*</label>
+            <label for="id_work_experience">Стаж работы*</label>
             <input type="text" id="id_work_experience" name="work_experience" required placeholder="Введите ваш стаж работы" value="{% if form.work_experience.value %}{{ form.work_experience.value }}{% endif %}">
             {% if form.work_experience.errors %}
                 <div class="alert alert-danger">{{ form.work_experience.errors }}</div>

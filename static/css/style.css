@@ -152,16 +152,16 @@ form button:hover {
 }
 
 #profile-info-container {
-    display: flex;
+    /* display: flex; */
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #user-avatar img {
     max-width: 100px;
     max-height: 100px;
     margin-left: 20px;
-    border-radius: 50%;
+    border-radius: 5px;
 }
 
 .ad-photos {
