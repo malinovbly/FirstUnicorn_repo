@@ -26,14 +26,12 @@
                 <a href="{% url "main:index" %}">Главная</a>
                 <a href="{% url "vacancies:index" %}">Вакансии</a>
                 <a href="{% url "main:about" %}">О нас</a>
+                <a href="{% url "user:profile" %}">Профиль</a>
+                <a href="{% url "user:login" %}">Вход</a>
 
                 {% comment %}
-                <a href="register.html">Регистрация</a>
-                <a href="login.html">Вход</a>
-
-                <a href="add-ad.html" style="display: none;">Добавить объявление</a>
-                <a href="profile.html" style="display: none;">Профиль</a>
-                <a href="#" style="display: none;">Выход</a>
+                    <a href="add-ad.html" style="display: none;">Добавить объявление</a>
+                    <a href="#" style="display: none;">Выход</a>
                 {% endcomment %}
             </nav>
         </div>

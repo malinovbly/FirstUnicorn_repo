@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+    <section class="form-section">
+        <h2>Вход</h2>
+        <form id="login-form">
+            <label for="login-username">Имя пользователя:</label>
+            <input type="text" id="login-username" name="login-username" required>
+            
+            <label for="login-password">Пароль:</label>
+            <input type="password" id="login-password" name="login-password" required>
+            
+            <button class="btn btn-outline-warning" type="submit">Войти</button>
+        </form>
+        <p style="margin-top: 1rem;"><a href="#">Забыли пароль?</a></p>
+        <p style="margin-top: -0.5rem;">Впервые на нашем сайте? <a href="{% url "user:registration" %}">Создать аккаунт</a></p>
+    </section>
+</div>
+
+{% endblock %}

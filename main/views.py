@@ -21,12 +21,3 @@ def about(request):
     }
 
     return render(request, 'main/about.html', context)
-
-
-def profile(request):
-    context = {
-        'title': 'FirstUnicorn | Профиль'
-    }
-
-    return render(request, 'main/profile.html', context)
-

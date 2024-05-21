@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+    <section id="profile">
+        <h2 style="margin-bottom: 1.5rem;">Профиль</h2>
+        <div id="profile-info-container">
+            <div id="profile-info">
+                <p><b>Имя пользователя:</b> ivanov123</p>
+                <p><b>ФИО:</b> Иванов Иван Иванович</p>
+                <p><b>Возраст:</b> 30 лет</p>
+                <p><b>Электронная почта:</b> <a href="email:ivanov@example.com">ivanov@example.com</a></p>
+                <p><b>Телефон:</b> <a href="tel:+7-123-456-7890">+7 (123) 456-78-90</a></p>
+                <p><b>Город:</b> Москва</p>
+                <p><b>Профессия (стаж):</b> Токарь (5 лет)</p>
+                <p><b>О себе:</b> Люблю шлифовать детали.</p>
+            </div>
+            <div id="user-avatar">
+                <img src="#" alt="Аватар пользователя">
+            </div>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Услуги</h3>
+        <div id="user-ads-list">
+            <div class="ad-item">
+                <h3>Услуги квалифицированного слесаря</h3>
+                <p>Предлагаю услуги опытного слесаря по ремонту и обслуживанию оборудования. Быстро и качественно выполним слесарные работы любой сложности.</p>
+                <p>Цена: 5003 руб.</p>
+                <div class="ad-photos">
+                    <img src="#" alt="Фото объявления">
+                    <img src="#" alt="Фото объявления">
+                </div>
+            </div>
+            <button class="delete-btn">Удалить</button>
+        </div>
+        <!-- Другие услуги пользователя -->
+    </section>
+</div>
+
+{% endblock %}

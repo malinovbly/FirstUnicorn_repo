@@ -286,3 +286,7 @@ footer {
     margin: 0.5rem 0;
     font-size: 1rem;
 }
+
+.form-auth form {
+    width: 500px;
+}

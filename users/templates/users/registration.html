@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+    <section class="form-section">
+        <h2 style="margin-bottom: -1rem;">Регистрация</h2>
+        <form id="update-profile-form" class="form-section">
+            <label for="login-username">Имя пользователя:</label>
+            <input type="text" id="login-username" name="login-username" required>
+            
+            <label for="login-password">Пароль:</label>
+            <input type="password" id="login-password" name="login-password" required>
+
+            <label for="login-password">Повторите пароль:</label>
+            <input type="password" id="login-password" name="login-password" required>
+
+            <label for="first-name">Имя:</label>
+            <input type="text" id="first-name" name="first-name" required>
+            
+            <label for="last-name">Фамилия:</label>
+            <input type="text" id="last-name" name="last-name" required>
+            
+            <label for="patronymic">Отчество:</label>
+            <input type="text" id="patronymic" name="patronymic" required>
+            
+            <label for="birthdate">Дата рождения:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <label for="email">Электронная почта:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="city">Город:</label>
+            <input type="text" id="city" name="city" required>
+            
+            <label for="profession">Профессия:</label>
+            <input type="text" id="profession" name="profession" required>
+            
+            <label for="experience">Стаж работы (в годах):</label>
+            <input type="number" id="experience" name="experience" required>
+            
+            <label for="bio">О себе:</label>
+            <textarea id="bio" name="bio"></textarea>
+
+            <label for="avatar">Загрузить аватар:</label>
+            <input type="file" id="avatar" name="avatar" accept="image/*" required>
+            
+            <button class="btn btn-outline-warning" type="submit">Зарегистрироваться</button>
+        </form>
+    </section>
+</div>
+
+{% endblock %}
