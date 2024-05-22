@@ -11,7 +11,7 @@
             <form action="{% url "user:profile" %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div id="user-avatar">
                         {% if user.image %}
                             <img src="{{ user.image.url }}" alt="Аватар пользователя" style="max-width: 150px;">
@@ -28,25 +28,25 @@
                 <div class="col-md-12" style="display: flex; justify-content: space-between;">
                     <div class="col-md-5">
                         <label for="id_username">Никнейм*</label>
-                        <input type="text" id="id_username" name="username" required placeholder="Введите имя пользователя" value="{{ form.username.value }}">
+                        <input type="text" id="id_username" name="username" required placeholder="Имя пользователя" value="{{ form.username.value }}">
                         {% if form.username.errors %}
                             <div class="alert alert-danger">{{ form.username.errors }}</div>
                         {% endif %}
             
                         <label for="id_last_name">Фамилия*</label>
-                        <input type="text" id="id_last_name" name="last_name" required placeholder="Введите вашу фамилию" value="{{ form.last_name.value }}">
+                        <input type="text" id="id_last_name" name="last_name" required placeholder="Иванов" value="{{ form.last_name.value }}">
                         {% if form.last_name.errors %}
                             <div class="alert alert-danger">{{ form.last_name.errors }}</div>
                         {% endif %}
             
                         <label for="id_first_name">Имя*</label>
-                        <input type="text" id="id_first_name" name="first_name" required placeholder="Введите ваше имя" value="{{ form.first_name.value }}">
+                        <input type="text" id="id_first_name" name="first_name" required placeholder="Иван" value="{{ form.first_name.value }}">
                         {% if form.first_name.errors %}
                             <div class="alert alert-danger">{{ form.first_name.errors }}</div>
                         {% endif %}
             
                         <label for="id_patronymic">Отчество</label>
-                        <input type="text" id="id_patronymic" name="patronymic" placeholder="Введите ваше отчество" value="{% if form.patronymic.value %}{{ form.patronymic.value }}{% endif %}">
+                        <input type="text" id="id_patronymic" name="patronymic" placeholder="Иванович" value="{% if form.patronymic.value %}{{ form.patronymic.value }}{% endif %}">
                     </div>
                     
                     <div class="col-md-5">
@@ -57,18 +57,18 @@
                         {% endif %}
                         
                         <label for="id_profession">Профессия*</label>
-                        <input type="text" id="id_profession" name="profession" required placeholder="Введите вашу профессию" value="{{ form.profession.value }}">
+                        <input type="text" id="id_profession" name="profession" required placeholder="Ваша профессия" value="{% if form.profession.value %}{{ form.profession.value }}{% endif %}">
                         {% if form.profession.errors %}
                             <div class="alert alert-danger">{{ form.profession.errors }}</div>
                         {% endif %}
         
                         <label for="id_work_experience">Стаж работы*</label>
-                        <input type="text" id="id_work_experience" name="work_experience" required placeholder="Введите ваш стаж работы" value="{{ form.work_experience.value }}">
+                        <input type="text" id="id_work_experience" name="work_experience" required placeholder="Ваш стаж работы" value="{% if form.work_experience.value %}{{ form.work_experience.value }}{% endif %}">
                         {% if form.work_experience.errors %}
                             <div class="alert alert-danger">{{ form.work_experience.errors }}</div>
                         {% endif %}
                         
-                        <label for="id_email">Электронная почта*</label>
+                        <label for="id_email">Email*</label>
                         <input type="email" id="id_email" name="email" required placeholder="Введите ваш email" value="{{ form.email.value }}">
                         {% if form.email.errors %}
                             <div class="alert alert-danger">{{ form.email.errors }}</div>
@@ -84,19 +84,29 @@
         </div>
 
         <div class="col-md-6">
-            <h3>Услуги</h3>
+            <h3>Ваши объявления</h3>
+            <a href="{% url "user:add_vacancy" %}"><button class="btn btn-outline-warning">Создать новое объявление</button></a>
+
             <div id="user-ads-list">
-                <div class="ad-item">
-                    <h3>Услуги квалифицированного слесаря</h3>
-                    <p>Предлагаю услуги опытного слесаря по ремонту и обслуживанию оборудования. Быстро и качественно выполним слесарные работы любой сложности.</p>
-                    <p>Цена: 5003 руб.</p>
-                    <div class="ad-photos">
-                        <img src="#" alt="Фото объявления">
-                        <img src="#" alt="Фото объявления">
+                {% for vacancy in vacancies %}
+                {% if vacancy.user == user %}
+                    <div class="ad-item">
+                        <a href="#"><h3>{{ vacancy.name }}</h3></a>
+                        <p>{{ vacancy.description }}</p>
+                        <p>Цена: {{ vacancy.price }} руб.</p>
+                        <div class="ad-photos">
+                            {% if vacancy.image %}
+                                <img src="{{ vacancy.image.url }}" alt="Фото объявления">
+                            {% else %}
+                                <img src="{% static "img/img_not_found.png" %}" alt="Фото объявления">
+                            {% endif %}
+                        </div>
+                        <button class="delete-btn">Удалить</button>
                     </div>
-                </div>
-                <button class="delete-btn">Удалить</button>
+                {% endif %}
+                {% endfor %}
             </div>
+
         </div>
     </section>
 </div>

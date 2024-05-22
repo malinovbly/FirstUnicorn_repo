@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from users.models import User
+from vacancies.models import Vacancy
 
 
 class UserLoginForm(AuthenticationForm):
@@ -82,3 +83,26 @@ class ProfileForm(UserChangeForm):
     profession = forms.CharField()
     work_experience = forms.CharField()
     self_info = forms.CharField(required=False)
+
+
+class AddVacancyForm(forms.ModelForm):
+
+    class Meta:
+        model = Vacancy
+        fields = (
+            "name",
+            "description",
+            "make_time",
+            "price",
+            "email",
+            "image",
+            "slug",
+        )
+
+
+    name = forms.CharField()
+    description = forms.CharField(required=False)
+    make_time = forms.CharField(required=False)
+    price = forms.CharField()
+    email = forms.CharField()
+    image = forms.ImageField(required=False)

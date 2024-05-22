@@ -18,7 +18,9 @@
                     <div class="ad-item">
                         <h3><a href="{% url "vacancies:vacancy" vacancy.slug %}">{{ vacancy.name }}</a></h3>
                         <p>{{ vacancy.description }}</p>
-                        <p>Срок: <b>{{ vacancy.make_time }}</b></p>
+                        {% if vacancy.make_time %}
+                            <p>Срок: <b>{{ vacancy.make_time }}</b></p>
+                        {% endif %}
                         <p>Стоимость: <b>{{ vacancy.price }}</b> руб.</p>
                         <div class="ad-photos">
                             {% if vacancy.image %}
@@ -27,7 +29,7 @@
                                 <img src="{% static "img/img_not_found.png" %}" alt="Фото объявления">
                             {% endif %}
                         </div>
-                        <p>Опубликовано: {{ vacancy.author_link }}
+                        <p style="margin-top: 5px;">Автор: {{ vacancy.user }}</p>
                     </div>
                 {% endfor %}
             </div>
