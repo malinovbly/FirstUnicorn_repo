@@ -5,9 +5,9 @@
 {% block content %}
 
 <div class="container">
-    <section class="form-section">
-        <h2 style="margin-bottom: -1rem;">Регистрация</h2>
-        <form action="{% url "user:registration" %}" method="post" id="update-profile-form" class="form-section">
+    <section class="form-section" style="width: 600px; margin-left: auto; margin-right: auto;">
+        <h2>Регистрация</h2>
+        <form action="{% url "user:registration" %}" method="post" id="update-profile-form">
             {% csrf_token %}
             
             <label for="id_username">Имя пользователя*</label>

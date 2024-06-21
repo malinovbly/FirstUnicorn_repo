@@ -8,7 +8,7 @@
 <div class="container">
     <section id="ads">
         <h2>Поиск услуг</h2>
-        <form id="filter-form" method="get" action="{% url "vacancies:search" %}">
+        <form id="filter-form" method="get" action="{% url "vacancies:search" %}" style="width: 250px;">
             <div class="filter-group filter-group-search">
                 <label for="filter-keywords">Ключевые слова:</label>
                 <input class="form-control me-2" type="search" id="filter-keywords" name="q" placeholder="Найти">
@@ -36,7 +36,6 @@
             <h3>Результаты поиска по запросу "{{ request.GET.q }}"</h3>
         {% endif %}
         {% if not vacancies %}
-            <link rel="stylesheet" href="{% static "css/my_footer_css.css" %}">
             <h2>По вашему запросу ничего не найдено</h2>
         {% endif %}
 

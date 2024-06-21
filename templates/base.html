@@ -24,7 +24,7 @@
             <h1>FirstUnicorn</h1>
             <nav>
                 <a href="{% url "main:index" %}">Главная</a>
-                <a href="{% url "vacancies:index" %}">Вакансии</a>
+                <a href="{% url "vacancies:index" %}">Услуги</a>
                 <a href="{% url "main:about" %}">О нас</a>
                 
                 {% if not user.is_authenticated %}
